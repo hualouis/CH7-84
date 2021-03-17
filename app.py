@@ -37,15 +37,17 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        # TextSendMessage(text= "吃飽了嗎"))
-        StickerSendMessage(
+    msg = event.message.text
+    if msg in ['愛你']
+        sticker_message = StickerSendMessage(
             package_id='1',
             sticker_id='1'
         )
+        return
 
-
+    # line_bot_api.reply_message(
+    #     event.reply_token,
+    #     TextSendMessage(text= "吃飽了嗎"))
     
 if __name__ == "__main__":
     app.run()

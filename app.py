@@ -10,14 +10,23 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, StickerSendMessage
 )
 
-from datetime import datetime
+from datetime import datetime, date
 
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('mlMIoXx0OEtv8B+AqOQhZPL4cww2YvqiBCBxx6S7nZIa0pNfWIpc1yAUTyBvtHYmYmGbuAN3XDr9ls0GgQZBd//mqKNVq3jxhkbcOVGs90d39rNQ6e4tKG7aURK2+dXRtiCq/5fXYl3s28rr4zFf5AdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('5429cb61345aaa978fb617ca130a99dc')
+profile = line_bot_api.get_profile(user_id)
 daynow = datetime.now().strftime("%d/%m/%Y %H:%M")
 today = date.today()
+
+
+if str(daynow) == '19/03/2021':
+    line_bot_api.push_message(
+        'U70af0951b13eb44eaa7cb04b4075caef', 
+        TextSendMessage(text='Hello World!')
+        )
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -54,12 +63,6 @@ def handle_message(event):
             event.reply_token,
             sticker_message)
         return
-
-    if str(daynow) == '19/03/2021 12:59':
-        line_bot_api.push_message(
-            event.reply_token, 
-            TextSendMessage(text='Hello World!')
-            )
 
 if __name__ == "__main__":
     app.run()

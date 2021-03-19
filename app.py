@@ -19,14 +19,6 @@ handler = WebhookHandler('5429cb61345aaa978fb617ca130a99dc')
 daynow = datetime.now().strftime("%d/%m/%Y %H:%M")
 today = date.today()
 
-
-if str(daynow) == '19/03/2021':
-    line_bot_api.push_message(
-        'U70af0951b13eb44eaa7cb04b4075caef', 
-        TextSendMessage(text='Hello World!')
-        )
-
-
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -62,6 +54,11 @@ def handle_message(event):
             event.reply_token,
             sticker_message)
         return
+    if str(daynow) == '19/03/2021':
+        line_bot_api.push_message(
+            'U70af0951b13eb44eaa7cb04b4075caef', 
+            TextSendMessage(text='Hello World!')
+            )
 
 if __name__ == "__main__":
     app.run()

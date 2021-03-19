@@ -53,12 +53,12 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             sticker_message)
-        return
-    if str(daynow) == '19/03/2021':
-        line_bot_api.push_message(
-            'U70af0951b13eb44eaa7cb04b4075caef', 
-            TextSendMessage(text='Hello World!')
-            )
 
+        line_bot_api.push_message('U70af0951b13eb44eaa7cb04b4075caef', TextSendMessage(text='Hello World!'))
+
+        return
+
+    # if str(daynow) == '19/03/2021':
+	    
 if __name__ == "__main__":
     app.run()

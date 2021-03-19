@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi('mlMIoXx0OEtv8B+AqOQhZPL4cww2YvqiBCBxx6S7nZIa0pNfWIpc1yAUTyBvtHYmYmGbuAN3XDr9ls0GgQZBd//mqKNVq3jxhkbcOVGs90d39rNQ6e4tKG7aURK2+dXRtiCq/5fXYl3s28rr4zFf5AdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('5429cb61345aaa978fb617ca130a99dc')
-daynow = datetime.now().strftime("%d/%m/%Y %H:%M")
+daynow = datetime.now().strftime("%d/%m/%Y")
 today = date.today()
 
 @app.route("/callback", methods=['POST'])
@@ -44,6 +44,9 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
+    group_id = event.source.group_id
+    print("group_id =", group_id)
+    
     if '愛你' in msg: 
         sticker_message = StickerSendMessage(
             package_id='11537',
@@ -56,10 +59,10 @@ def handle_message(event):
         return
 
 
-if str(daynow) == '19/03/2021 16:35':
-    line_bot_api.push_message(
-        'U70af0951b13eb44eaa7cb04b4075caef', 
-        TextSendMessage(text='Hello World!')
-        )        
+# if str(daynow) == '19/03/2021 16:35':
+#     line_bot_api.push_message(
+#         'U70af0951b13eb44eaa7cb04b4075caef', 
+#         TextSendMessage(text='Hello World!')
+#         )        
 if __name__ == "__main__":
     app.run()

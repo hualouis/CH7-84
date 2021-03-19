@@ -4,12 +4,13 @@ from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
-    InvalidSignatureError
+    InvalidSignatureError, LineBotApiError
 )
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, StickerSendMessage
 )
 
+from linebot.exceptions import 
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('mlMIoXx0OEtv8B+AqOQhZPL4cww2YvqiBCBxx6S7nZIa0pNfWIpc1yAUTyBvtHYmYmGbuAN3XDr9ls0GgQZBd//mqKNVq3jxhkbcOVGs90d39rNQ6e4tKG7aURK2+dXRtiCq/5fXYl3s28rr4zFf5AdB04t89/1O/w1cDnyilFU=')
@@ -32,6 +33,9 @@ def callback():
         print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
 
+    except LineBotApiError as e:
+    # error handle
+
     return 'OK'
 
 
@@ -48,6 +52,12 @@ def handle_message(event):
             event.reply_token,
             sticker_message)
         return
-    
+
+    if msg = 123:
+	    line_bot_api.push_message(
+	    	event.reply_token, 
+	    	TextSendMessage(text='Hello World!')
+	    	)
+
 if __name__ == "__main__":
     app.run()

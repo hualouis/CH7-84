@@ -32,8 +32,8 @@ def callback():
         print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
 
-    except LineBotApiError as e:
-    # error handle
+    # except LineBotApiError as e:
+    # # error handle
 
     return 'OK'
 
@@ -53,10 +53,10 @@ def handle_message(event):
         return
 
     if msg = 123:
-	    line_bot_api.push_message(
-	    	event.reply_token, 
-	    	TextSendMessage(text='Hello World!')
-	    	)
+        line_bot_api.push_message(
+            event.reply_token, 
+            TextSendMessage(text='Hello World!')
+            )
 
 if __name__ == "__main__":
     app.run()

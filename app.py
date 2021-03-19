@@ -16,7 +16,6 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi('mlMIoXx0OEtv8B+AqOQhZPL4cww2YvqiBCBxx6S7nZIa0pNfWIpc1yAUTyBvtHYmYmGbuAN3XDr9ls0GgQZBd//mqKNVq3jxhkbcOVGs90d39rNQ6e4tKG7aURK2+dXRtiCq/5fXYl3s28rr4zFf5AdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('5429cb61345aaa978fb617ca130a99dc')
-profile = line_bot_api.get_profile(user_id)
 daynow = datetime.now().strftime("%d/%m/%Y %H:%M")
 today = date.today()
 

@@ -52,7 +52,7 @@ def handle_message(event):
             sticker_message)
         return
 
-    if msg == 123:
+    if msg == '123':
         line_bot_api.push_message(
             event.reply_token, 
             TextSendMessage(text='Hello World!')
